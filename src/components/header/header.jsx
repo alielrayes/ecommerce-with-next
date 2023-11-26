@@ -8,6 +8,7 @@ import {
   faRightToBracket,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -25,11 +26,23 @@ const Header = () => {
         <span style={{ fontWeight: "bold" }}>AWU</span>
         <p style={{ letterSpacing: "0.5px" }}>Shopping</p>
       </div>
-      <div className="links">
-        <a
+
+
+ 
+
+
+
+
+
+
+
+
+
+      <nav className="links">
+        <Link
           style={{ position: "relative" }}
           className="cart"
-          href="./pages/cart.html"
+          href="/cart"
         >
           <FontAwesomeIcon
             className="fa-solid fa-cart-shopping"
@@ -40,8 +53,13 @@ const Header = () => {
           />
           $0.00
           <span className="products-number">2</span>
-        </a>
-        <a className="sign-in" href="./pages/signin.html">
+        </Link>
+
+
+
+        <Link 
+        className="sign-in"
+         href="/signin">
           <FontAwesomeIcon
             className="fa-solid fa-right-to-bracket"
             style={{
@@ -50,8 +68,14 @@ const Header = () => {
             icon={faRightToBracket}
           />
           Sign in
-        </a>
-        <a className="register" href="./pages/register.html">
+        </Link>
+
+
+
+
+        <Link 
+        className="register" 
+        href="/register">
           <FontAwesomeIcon
             className="fa-solid fa-user-plus"
             style={{
@@ -60,8 +84,8 @@ const Header = () => {
             icon={faUserPlus}
           />
           Register
-        </a>
-      </div>
+        </Link>
+      </nav>
     </header>
   );
 };
