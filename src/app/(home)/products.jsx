@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 // const arr = [
@@ -13,7 +14,7 @@ import React from "react";
 
 async function getData() {
 
-  await new Promise(resolve => setTimeout(resolve, 3000))
+  // await new Promise(resolve => setTimeout(resolve, 3000))
   
   const res = await fetch("http://localhost:4000/products", {
     next: { revalidate: 0 },
@@ -28,16 +29,16 @@ async function getData() {
 }
 
 const Products = async () => {
-  const data = await getData();
+  const arrData = await getData();
 
   return (
     <section className="products flex">
-      {data.map((item) => {
+      {arrData.map((item) => {
         return (
           <article title={item.title} key={item.id} className="card">
-            <a href="/pages/product-details.html">
+            <Link href={`/product-details/${item.id}`}>
               <img width={266}   src={item.productImg} alt=""  />
-            </a>
+            </Link>
             <div style={{ width: "266px" }} className="content">
               <h1 className="title">{item.title.slice(0, 15)}...</h1>
               <p className="description">

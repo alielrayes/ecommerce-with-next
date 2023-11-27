@@ -13,7 +13,7 @@ import Link from "next/link";
 const Header = () => {
   return (
     <header id="headerElement" className="flex">
-      <div className="logo">
+      <Link href={"/"} className="logo">
         <FontAwesomeIcon
           className="fa-solid fa-bag-shopping"
           style={{
@@ -25,7 +25,7 @@ const Header = () => {
 
         <span style={{ fontWeight: "bold" }}>AWU</span>
         <p style={{ letterSpacing: "0.5px" }}>Shopping</p>
-      </div>
+      </Link>
 
 
  

@@ -1,10 +1,13 @@
 // @ts-nocheck
+
 import { Suspense } from "react";
 import Footer from "../../components/footer/footer.jsx";
 import Header from "../../components/header/header.jsx";
 import "./home.css";
 import Products from "./products.jsx";
 import Loading from "./loading.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
@@ -25,8 +28,11 @@ export default function Home() {
       </div>
 
       <main>
-        <h1 className="recommended">
-          <i className="fa-solid fa-check" />
+        <h1 className="recommended flex">
+          <FontAwesomeIcon
+            style={{ width: "1.9rem", marginRight: "1.2rem" }}
+            icon={faCheck}
+          />
           Recommended for you
         </h1>
 
