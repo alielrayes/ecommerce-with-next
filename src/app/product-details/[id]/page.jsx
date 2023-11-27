@@ -3,6 +3,7 @@ import Header from "components/header/header";
 import "./product-details.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { notFound } from "next/navigation";
 
 async function getData(iddd) {
   const res = await fetch(`http://localhost:4000/products/${iddd}`);
@@ -11,7 +12,7 @@ async function getData(iddd) {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    notFound()
   }
 
   return res.json();
