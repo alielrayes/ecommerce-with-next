@@ -1,7 +1,10 @@
+// @ts-nocheck
+import { Suspense } from "react";
 import Footer from "../../components/footer/footer.jsx";
 import Header from "../../components/header/header.jsx";
 import "./home.css";
 import Products from "./products.jsx";
+import Loading from "./loading.jsx";
 
 export default function Home() {
   return (
@@ -26,7 +29,10 @@ export default function Home() {
           <i className="fa-solid fa-check" />
           Recommended for you
         </h1>
-        <Products />
+
+        <Suspense fallback={<Loading />}>
+          <Products />
+        </Suspense>
       </main>
 
       <Footer />
