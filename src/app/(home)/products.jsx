@@ -1,3 +1,5 @@
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -54,7 +56,8 @@ const Products = async () => {
               >
                 <div className="price">${item.price}</div>
                 <button className="add-to-cart flex">
-                  <i className="fa-solid fa-cart-plus" />
+                <FontAwesomeIcon style={{width: "1rem"}} icon={faCartPlus}  />
+
                   Add To Cart
                 </button>
               </div>
