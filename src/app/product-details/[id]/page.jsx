@@ -4,6 +4,7 @@ import "./product-details.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { notFound } from "next/navigation";
+import Image from "next/image.js";
 
 async function getData(iddd) {
   const res = await fetch(`http://localhost:4000/products/${iddd}`);
@@ -12,29 +13,19 @@ async function getData(iddd) {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    notFound()
+    notFound();
   }
 
   return res.json();
 }
-
-
-
-
- 
-
-
 
 export async function generateMetadata({ params }) {
   const objData = await getData(params.id);
   return {
     title: objData.title,
     description: objData.description,
-  }
+  };
 }
-
-
-
 
 const Page = async ({ params }) => {
   const objData = await getData(params.id);
@@ -52,19 +43,15 @@ const Page = async ({ params }) => {
       <Header />
 
       <main style={{ textAlign: "center" }} className="flex">
-       
-        <img alt="" src={`.${objData.productImg}`} />
+        <Image width={266}  height={270} quality={100}  alt="" src={`${objData.productImg}`} />
         <div className="product-details">
           <div style={{ justifyContent: "space-between" }} className="flex">
             <h2>{objData.title}</h2>
             <p className="price">${objData.price}</p>
           </div>
-          <p className="description">
-          {objData.description}
-          </p>
+          <p className="description">{objData.description}</p>
           <button className="flex add-to-cart">
-           
-            <FontAwesomeIcon style={{width: "1.1rem"}} icon={faCartPlus}  />
+            <FontAwesomeIcon style={{ width: "1.1rem" }} icon={faCartPlus} />
             Add To Cart
           </button>
         </div>

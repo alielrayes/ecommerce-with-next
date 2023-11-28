@@ -9,9 +9,12 @@ import Loading from "./loading.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
+
 export default function Home() {
   return (
     <>
+
+
       <div className="top-img">
         <Header />
         <section className="content">

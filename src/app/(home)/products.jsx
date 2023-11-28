@@ -2,7 +2,7 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+import Image from "next/image.js";
 
 // const arr = [
 //   { productImg: "./images/1.png" },
@@ -16,16 +16,15 @@ import React from "react";
 // ];
 
 async function getData() {
-
   // await new Promise(resolve => setTimeout(resolve, 3000))
-  
+
   const res = await fetch("http://localhost:4000/products", {
     next: { revalidate: 0 },
   });
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    notFound()
+    notFound();
   }
 
   return res.json();
@@ -40,7 +39,13 @@ const Products = async () => {
         return (
           <article title={item.title} key={item.id} className="card">
             <Link href={`/product-details/${item.id}`}>
-              <img width={266}   src={item.productImg} alt=""  />
+              <Image
+                quality={100}
+                width={266}
+                height={260}
+                src={item.productImg}
+                alt=""
+              />
             </Link>
             <div style={{ width: "266px" }} className="content">
               <h1 className="title">{item.title.slice(0, 15)}...</h1>
@@ -56,8 +61,10 @@ const Products = async () => {
               >
                 <div className="price">${item.price}</div>
                 <button className="add-to-cart flex">
-                <FontAwesomeIcon style={{width: "1rem"}} icon={faCartPlus}  />
-
+                  <FontAwesomeIcon
+                    style={{ width: "1rem" }}
+                    icon={faCartPlus}
+                  />
                   Add To Cart
                 </button>
               </div>
